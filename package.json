@@ -1,0 +1,22 @@
+{
+  "name": "cse341-ww-student-code",
+  "version": "1.0.0",
+  "description": "practice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hlaolil/cse341-ww-student-code.git"
+  },
+  "keywords": [
+    "optional"
+  ],
+  "author": "Letlotlo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hlaolil/cse341-ww-student-code/issues"
+  },
+  "homepage": "https://github.com/hlaolil/cse341-ww-student-code#readme"
+}
