@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path'); // <-- Add this line
 const app = express();
 const PORT = 8080;
 
@@ -10,7 +11,7 @@ const data = [
 ];
 
 // Enable JSON response
-app.use(express.json());
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 // REST endpoint to GET all data
 app.get('/api/data', (req, res) => {
