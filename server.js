@@ -1,25 +1,16 @@
 const express = require('express');
-const path = require('path'); // <-- Add this line
+const {mongoDB} = require('./data/database');
+const contactsRoutes = require('./routes/contacts');
+
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 3000;
 
-// Mock data for frontend
-const data = [
-  { id: 1, name: "Item 1", description: "This is item 1" },
-  { id: 2, name: "Item 2", description: "This is item 2" },
-  { id: 3, name: "Item 3", description: "This is item 3" }
-];
+app.use(express.json());
 
-// Enable JSON response
-app.use(express.static(path.join(__dirname, 'frontend')));
+app.use('/contacts', contactsRoutes);
 
-// REST endpoint to GET all data
-app.get('/api/data', (req, res) => {
-  res.json(data);
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, async () => {
+  await mongoDB();
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
