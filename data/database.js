@@ -11,7 +11,7 @@ async function mongoDB() {
   if (!db) {
     try {
       await client.connect();
-      db = client.db(); // uses default DB name from URI
+      db = client.db('project1');
       console.log('✅ Connected to MongoDB');
     } catch (err) {
       console.error('Error connecting to MongoDB', err);
