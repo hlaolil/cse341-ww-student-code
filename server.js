@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Contacts API is running at /contacts');
+  res.send('API for all contacts is running at /contacts. Individual contacts at contacts/<id>');
 });
 
 app.use('/contacts', contactsRoutes);
