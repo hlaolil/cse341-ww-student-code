@@ -1,0 +1,171 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Contacts API",
+    "version": "1.0.0",
+    "description": "API for managing contacts (CSE341 Project)"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/contacts": {
+      "get": {
+        "summary": "Get all contacts",
+        "tags": ["Contacts"],
+        "responses": {
+          "200": {
+            "description": "List of all contacts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Contact" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new contact",
+        "tags": ["Contacts"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Contact" },
+              "example": {
+                "firstName": "Sarah",
+                "lastName": "Williams",
+                "email": "sarah.williams@example.com",
+                "favoriteColor": "Purple",
+                "birthday": "1993-03-22"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Contact created successfully"
+          }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "summary": "Get a single contact by ID",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true,
+            "description": "MongoDB ObjectId of the contact"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single contact",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Contact" }
+              }
+            }
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing contact",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true,
+            "description": "MongoDB ObjectId of the contact"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Contact" },
+              "example": {
+                "firstName": "Sarah",
+                "lastName": "Williams",
+                "email": "sarah.updated@example.com",
+                "favoriteColor": "Green",
+                "birthday": "1993-03-22"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Contact updated successfully"
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a contact",
+        "tags": ["Contacts"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": { "type": "string" },
+            "required": true,
+            "description": "MongoDB ObjectId of the contact"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Contact deleted successfully"
+          },
+          "404": {
+            "description": "Contact not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Contact": {
+        "type": "object",
+        "required": [
+          "firstName",
+          "lastName",
+          "email",
+          "favoriteColor",
+          "birthday"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Auto-generated MongoDB ID"
+          },
+          "firstName": { "type": "string" },
+          "lastName": { "type": "string" },
+          "email": { "type": "string" },
+          "favoriteColor": { "type": "string" },
+          "birthday": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    }
+  }
+}
