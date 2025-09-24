@@ -12,7 +12,7 @@ app.use(express.json());
 // Root info
 app.get('/', (req, res) => {
   res.send(
-    'API for all contacts is running at /contacts. Individual contacts at /contacts/:id where ":id" is the real id.'
+    'API for all contacts is running at /contacts. Individual contacts at /contacts/:id and swagger at /api-docs'
   );
 });
 
