@@ -1,0 +1,43 @@
+### GET all contacts
+GET http://localhost:3000/contacts
+Content-Type: application/json
+
+###
+
+### GET one contact by ID
+GET http://localhost:3000/contacts/{{'id'}}
+Content-Type: application/json
+
+###
+
+### POST create a new contact
+POST http://localhost:3000/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Refuoe",
+  "lastName": "Ntoampe",
+  "email": "refuoe.ntoampe@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1985-05-12"
+}
+
+###
+
+### PUT update a contact (replace {{contactId}} with a real MongoDB _id)
+PUT http://localhost:3000/contacts/{{'id'}}
+Content-Type: application/json
+
+{
+  "firstName": "Refuoe",
+  "lastName": "Ntoampe",
+  "email": "refuoe.updated@example.com",
+  "favoriteColor": "Green",
+  "birthday": "1985-05-12"
+}
+
+###
+
+### DELETE a contact
+DELETE http://localhost:3000/contacts/{{'id'}}
+Content-Type: application/json
