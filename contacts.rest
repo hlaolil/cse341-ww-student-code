@@ -5,7 +5,7 @@ Content-Type: application/json
 ###
 
 ### GET one contact by ID
-GET http://localhost:3000/contacts/{{contactId}}
+GET http://localhost:3000/contacts/{{'id'}}
 Content-Type: application/json
 
 ###
@@ -25,7 +25,7 @@ Content-Type: application/json
 ###
 
 ### PUT update a contact (replace {{contactId}} with a real MongoDB _id)
-PUT http://localhost:3000/contacts/{{contactId}}
+PUT http://localhost:3000/contacts/{{'id'}}
 Content-Type: application/json
 
 {
@@ -39,5 +39,5 @@ Content-Type: application/json
 ###
 
 ### DELETE a contact
-DELETE http://localhost:3000/contacts/{{contactId}}
+DELETE http://localhost:3000/contacts/{{'id'}}
 Content-Type: application/json
